@@ -7,6 +7,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.example.anime_handbook.utiles.Constants.DETAILS_ARGUMENTS_KEY
 
 @Composable
 fun SetupNavGraph(navController: NavHostController)
@@ -30,11 +31,15 @@ fun SetupNavGraph(navController: NavHostController)
 
         composable(
             route = Screen.Details.route,
-            arguments = listOf(navArgument("heroId") {
+            arguments = listOf(navArgument(DETAILS_ARGUMENTS_KEY) {
                 type = NavType.IntType
             })
         )
         {
+
+        }
+
+        composable(route = Screen.Search.route){
 
         }
 
