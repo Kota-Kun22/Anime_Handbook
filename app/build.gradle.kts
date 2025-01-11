@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
-    kotlin("kapt") // Apply kapt plugin
+    kotlin("kapt") version "2.0.0" // Apply kapt plugin
 
 //  id("dagger.hilt.android.plugin")
     alias(libs.plugins.hilt.android)
@@ -11,17 +11,17 @@ plugins {
 
 //    id("com.google.devtools.ksp")
     alias(libs.plugins.ksp)
-
+    id("org.jetbrains.kotlin.plugin.compose") version "2.0.0" // Add this
 }
 
 android {
     namespace = "com.example.anime_handbook"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.example.anime_handbook"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -51,7 +51,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "2.0.0"
     }
     packaging {
         resources {
@@ -91,17 +91,23 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     // DataStore Preferences
     implementation(libs.androidx.datastore.preferences)
+
     // Hilt
     implementation(libs.dagger.hilt.android)
     kapt(libs.dagger.hilt.compiler)
     kapt(libs.androidx.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
     // Coil
     implementation(libs.coil.compose)
     // Room
     implementation(libs.room.runtime)
+    
     ksp(libs.room.compiler)
-    ksp(libs.androidx.room.compiler.v250)
+
+  //  ksp(libs.androidx.room.compiler.v250)
+
+
     implementation(libs.room.ktx)
     // Palette API
     implementation (libs.androidx.palette.ktx)
@@ -115,6 +121,8 @@ dependencies {
     testImplementation (libs.junit)
     testImplementation (libs.kotlin.test.junit)
     testImplementation (libs.kotlinx.coroutines.test)
+
+    implementation ("androidx.room:room-paging:2.6.1" ) // or the latest version available
 
 
 }
