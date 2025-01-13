@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.anime_handbook.presentation.screens.splash.SplashScreen
+import com.example.anime_handbook.presentation.screens.welcome.WelcomeScreen
 import com.example.anime_handbook.utiles.Constants.DETAILS_ARGUMENTS_KEY
 
 @Composable
@@ -22,6 +23,7 @@ fun SetupNavGraph(navController: NavHostController)
 
         composable(route = Screen.Welcome.route)
         {
+            WelcomeScreen(navController = navController)
 
         }
 
