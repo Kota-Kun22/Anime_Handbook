@@ -14,7 +14,7 @@ import com.example.anime_handbook.utiles.Constants.DETAILS_ARGUMENTS_KEY
 @Composable
 fun SetupNavGraph(navController: NavHostController)
 { //setting up the navHost for the navigation
-    NavHost(navController = navController, startDestination = Screen.Splash.route)
+    NavHost(navController = navController, startDestination = Screen.Welcome.route)
     {
         composable(route = Screen.Splash.route)
         {
