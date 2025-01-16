@@ -41,6 +41,7 @@ import com.example.anime_handbook.ui.theme.PAGING_INDICATOR_WIDTH
 import com.example.anime_handbook.ui.theme.Purple500
 import com.example.anime_handbook.ui.theme.Purple700
 import com.example.anime_handbook.ui.theme.SMALL_PADDING
+import com.example.anime_handbook.utiles.Constants.LAST_ON_BOARDING_PAGE
 
 @Composable
 fun WelcomeScreen(navController: NavHostController) {
@@ -77,6 +78,7 @@ fun WelcomeScreen(navController: NavHostController) {
             )
         }
 
+
         HorizontalPagerIndicator(
             pagerState = pagerState,
             pageCount = pages.size,
@@ -85,13 +87,13 @@ fun WelcomeScreen(navController: NavHostController) {
         )
 
         AnimatedVisibility(
-            visible = pagerState.currentPage == pages.lastIndex,
+            visible = pagerState.currentPage == LAST_ON_BOARDING_PAGE,//or I can last use pagerState.currentPage == 2(zero based indexing) instead of lastIndex hardcoding it here since i know how many pages are there
             modifier = Modifier.align(Alignment.CenterHorizontally),
             enter = fadeIn()
         ) {
             Button(
                 onClick = { navController.navigate("") },
-                modifier = Modifier.padding(horizontal = 16.dp)
+                modifier = Modifier.padding(horizontal = 16.dp).padding(bottom=10.dp).fillMaxWidth(0.8f)
             ) {
                 Text(text = "Finish")
             }
@@ -110,7 +112,7 @@ fun HorizontalPagerIndicator(
     indicatorSpacing: Dp = 6.dp
 ) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth().padding(bottom =16.dp),
         horizontalArrangement = Arrangement.Center
     ) {
         for (i in 0 until pageCount) {
